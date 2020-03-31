@@ -7,10 +7,8 @@ import PropTypes from 'prop-types';
 /**
  * A React Native component that gets a list and highlights a selected item and shows the items that are near.
  * 
- * @version 1.0.5
+ * @version 1.0.6
  * @author [Kfir Nevo](https://github.com/realKfiros)
- * 
- * @visibleName Best component ever you dumbass fuck
  */
 class FocusList extends Component {
   state = {

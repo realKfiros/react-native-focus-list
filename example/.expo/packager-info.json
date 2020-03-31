@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 14889,
-  "expoServerNgrokUrl": "https://if-v8g.realkfiros.example.exp.direct",
-  "packagerNgrokUrl": "https://packager.if-v8g.realkfiros.example.exp.direct",
-  "ngrokPid": 14913
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
