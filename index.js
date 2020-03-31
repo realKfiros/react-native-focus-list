@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
-import Item from './Item';
+import Item from './components/Item';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
