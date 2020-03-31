@@ -4,11 +4,24 @@ import Item from './components/Item';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+/**
+ * A React Native component that gets a list and highlights a selected item and shows the items that are near.
+ * 
+ * @version 1.0.5
+ * @author [Kfir Nevo](https://github.com/realKfiros)
+ * 
+ * @visibleName Best component ever you dumbass fuck
+ */
 class FocusList extends Component {
   state = {
     focus: 0
   };
 
+  /**
+   * The custom array that the component uses after converting the dataArray from props
+   * 
+   * @public
+   */
   getDataArray = () => {
     return this.props.dataArray.map((item) => ({
       index: this.props.dataArray.indexOf(item),
@@ -16,6 +29,11 @@ class FocusList extends Component {
     }));
   }
 
+  /**
+   * The current 2/3 elements shown
+   * 
+   * @public
+   */
   getCurrentFocus = () => {
     const dataArray = this.getDataArray();
     if (this.state.focus === 0) {
@@ -27,6 +45,11 @@ class FocusList extends Component {
     }
   }
 
+  /**
+   * Move forward in the display
+   * 
+   * @public
+   */
   moveForward = () => {
     if (this.state.focus !== this.props.dataArray.length - 1) {
       this.setState({
@@ -35,6 +58,11 @@ class FocusList extends Component {
     }
   }
 
+  /**
+   * Move backward in the display
+   * 
+   * @public
+   */
   moveBack = () => {
     if (this.state.focus !== 0) {
       this.setState({
@@ -43,6 +71,11 @@ class FocusList extends Component {
     }
   }
 
+  /**
+   * The focused item
+   * 
+   * @public
+   */
   get focused(){
     return this.getDataArray().find((item) => item.index === this.state.focus);
   }
@@ -60,13 +93,21 @@ class FocusList extends Component {
   }
 }
 
+/**
+ * Margin for the first item
+ * 
+ * @ignore
+ */
 const FirstItemFlatList = styled(FlatList)`
   margin-left: ${props => props.marginFirst}px;
 `
 
 FocusList.propTypes = {
+  /** The data array */
   dataArray: PropTypes.array.isRequired,
+  /** Custom wrapper component for list item */
   itemComponent: PropTypes.elementType,
+  /** Margin for the first item in the array */
   marginFirst: PropTypes.number
 }
 

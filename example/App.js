@@ -3,7 +3,9 @@ import { View } from 'react-native';
 import { Container, Header, Left, Right, Title, Content, Button, Text, H1 } from 'native-base';
 import styled from 'styled-components';
 import FocusList from 'react-native-focus-list';
-import { Ionicons } from '@expo/vector-icons';
+import IconItem from './IconItem';
+
+console.disableYellowBox = true;
 
 export default class App extends Component {
   render() {
@@ -45,25 +47,28 @@ export default class App extends Component {
             </InlineButton>
           </View>
 
-          <H1>List with icons - custom wrapper example</H1>
+          <H1>List with icons and text</H1>
           <FocusList
-                ref={list => this.iconsListRef = list} 
-                dataArray={[{
-                    name: 'logo-android',
-                    color: 'green'
-                }, {
-                    name: 'logo-apple',
-                    color: 'blue'
-                }, {
-                    name: 'logo-tux',
-                    color: 'red'
-                }]}
-                itemComponent={IconListItem}/>
+            ref={list => this.advancedListRef = list} 
+            dataArray={[{
+              name: 'logo-android',
+              color: 'green',
+              text: 'Android'
+            }, {
+              name: 'logo-apple',
+              color: 'blue',
+              text: 'iOS'
+            }, {
+              name: 'logo-tux',
+              color: 'red',
+              text: 'Linux'
+            }]}
+            itemComponent={IconItem}/>
           <View style={{ flexDirection: 'row' }}>
-            <InlineButton onPress={() => this.iconsListRef.moveBack()}>
+            <InlineButton onPress={() => this.advancedListRef.moveBack()}>
               <Text>Move back</Text>
             </InlineButton>
-            <InlineButton onPress={() => this.iconsListRef.moveForward()}>
+            <InlineButton onPress={() => this.advancedListRef.moveForward()}>
               <Text>Move forward</Text>
             </InlineButton>
           </View>
@@ -73,16 +78,6 @@ export default class App extends Component {
     );
   }
 }
-
-class IconListItem extends Component {
-  render() {
-    const IconView = this.props.focus ? IconViewFocused : IconViewNotFocused;
-    return <IconView name={this.props.data.name} color={this.props.data.color}/>;
-  }
-}
-
-const IconViewFocused = (props) => <Ionicons name={props.name} color={props.color || 'black'} size={35} style={{ margin: 5 }}/>;
-const IconViewNotFocused = (props) => <Ionicons name={props.name} color='grey' size={27} style={{ margin: 5 }}/>;
 
 const InlineButton = styled(Button)`
   margin: 10px;

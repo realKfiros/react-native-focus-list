@@ -1,6 +1,6 @@
 {
   "name": "react-native-focus-list",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A React Native component that gets a list and highlights a selected item and shows the items that are near.",
   "main": "index.js",
   "scripts": {
@@ -13,5 +13,6 @@
     "styled-components": "5.0.1"
   },
   "author": "realKfiros",
+  "repository": "https://github.com/realKfiros/react-native-focus-list",
   "license": "ISC"
 }
