@@ -1,5 +1,6 @@
 # react-native-focus-list
 [![npm version](https://badge.fury.io/js/react-native-focus-list.svg)](https://badge.fury.io/js/react-native-focus-list)
+[![runs with expo](https://img.shields.io/badge/Runs%20with%20Expo-000.svg?style=flat&logo=EXPO&labelColor=ffffff&logoColor=000)](https://exp.host/@realkfiros/focus-list-example)
 
 A React Native component that gets a list and highlights a selected item and shows the items that are near.
 
@@ -37,40 +38,6 @@ export default class App extends Component {
 | moveForward() | Moves forward in the lst |
 | moveBack() | Moves backward in the list |
 
-### example of usage with a wrapper
+### Full demo
 
-```js
-import React, { Component } from 'react';
-import FocusList from 'react-native-focus-list';
-import { Ionicons } from '@expo/vector-icons';
-
-export default class App extends Component {
-    render() {
-        return (
-            <FocusList
-                ref={list => this.iconsListRef = list} 
-                dataArray={[{
-                    name: 'logo-android',
-                    color: 'green'
-                }, {
-                    name: 'logo-apple',
-                    color: 'blue'
-                }, {
-                    name: 'logo-tux',
-                    color: 'red'
-                }]}
-                itemComponent={IconListItem}/>
-        )
-    }
-}
-
-class IconListItem extends Component {
-  render() {
-    const IconView = this.props.focus ? IconViewFocused : IconViewNotFocused;
-    return <IconView name={this.props.data.name} color={this.props.data.color}/>;
-  }
-}
-
-const IconViewFocused = (props) => <Ionicons name={props.name} color={props.color || 'black'} size={35} style={{ margin: 5 }}/>;
-const IconViewNotFocused = (props) => <Ionicons name={props.name} color='grey' size={27} style={{ margin: 5 }}/>;
-```
+[![run in expo snack](https://img.shields.io/badge/SNACK-TRY%20NOW-4630EB.svg?style=for-the-badge&logo=EXPO&labelColor=000&logoColor=FFF)](https://snack.expo.io/@realkfiros/react-native-focus-list-example)

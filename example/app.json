@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "focus-list",
-    "description": "No description",
-    "slug": "snack-1528b2e5-f387-40e4-a954-b724b231aebb",
+    "name": "focus-list-example",
+    "description": "Example of the react-native-focus-list module by realKfiros",
+    "slug": "focus-list-example",
     "privacy": "unlisted",
     "sdkVersion": "36.0.0",
     "version": "1.0.0",
@@ -23,6 +23,11 @@
     },
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "githubUrl": "https://github.com/realKfiros/react-native-focus-list/tree/master/example"
   }
 }

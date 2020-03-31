@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View,} from 'react-native';
+import { View } from 'react-native';
 import { Container, Header, Left, Right, Title, Content, Button, Text, H1 } from 'native-base';
 import styled from 'styled-components';
 import FocusList from 'react-native-focus-list';
