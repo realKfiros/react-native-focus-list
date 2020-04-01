@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /**
  * A React Native component that gets a list and highlights a selected item and shows the items that are near.
  * 
- * @version 1.0.8
+ * @version 1.0.9
  * @author [Kfir Nevo](https://github.com/realKfiros)
  */
 class FocusList extends Component {
@@ -86,7 +86,7 @@ class FocusList extends Component {
 
   render() {
     const ItemComponent = this.props.itemComponent;
-    const List = this.state.focus === 0 ? FirstItemFlatList : FlatList;
+    const List = this.state.focus === 0 ? FirstItemFlatList : CenteredFlatList;
     return (
       <List
         marginFirst={this.props.marginFirst}
@@ -98,13 +98,23 @@ class FocusList extends Component {
 }
 
 /**
+ * The same horizontal flat list but centered horizontally
+ * 
+ * @ignore
+ */
+const CenteredFlatList = styled(FlatList)`
+  flex-grow: 1;
+  justify-content: center;
+`;
+
+/**
  * Margin for the first item
  * 
  * @ignore
  */
-const FirstItemFlatList = styled(FlatList)`
+const FirstItemFlatList = styled(CenteredFlatList)`
   margin-left: ${props => props.marginFirst}px;
-`
+`;
 
 FocusList.propTypes = {
   /** The data array */
