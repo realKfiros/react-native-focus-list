@@ -29,7 +29,8 @@ export default class App extends Component {
 |---|---|---|---|
 |**`dataArray`**|`array<any>`| **REQUIRED** |The data array|
 |**`marginFirst`**|`number`| 20 |Margin for the first item in the array|
-|**`itemComponent`**|`element`|<Item> from Item.js|Custom wrapper component for list item|
+|**`itemComponent`**|`element`|`Item` from Item.js|Custom wrapper component for list item|
+|**`startNumber`**|`number`| 0 |The initial index that will be highlighted|
 
 ## Methods
 

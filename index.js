@@ -7,13 +7,19 @@ import PropTypes from 'prop-types';
 /**
  * A React Native component that gets a list and highlights a selected item and shows the items that are near.
  * 
- * @version 1.0.7
+ * @version 1.0.8
  * @author [Kfir Nevo](https://github.com/realKfiros)
  */
 class FocusList extends Component {
   state = {
     focus: 0
   };
+
+  componentDidMount() {
+    this.setState({
+      focus: this.props.startNumber
+    });
+  }
 
   /**
    * The custom array that the component uses after converting the dataArray from props
@@ -106,12 +112,15 @@ FocusList.propTypes = {
   /** Custom wrapper component for list item */
   itemComponent: PropTypes.elementType,
   /** Margin for the first item in the array */
-  marginFirst: PropTypes.number
+  marginFirst: PropTypes.number,
+  /** The initial index that will be highlighted */
+  startNumber: PropTypes.number
 }
 
 FocusList.defaultProps = {
   itemComponent: Item,
-  marginFirst: 0
+  marginFirst: 0,
+  startNumber: 0
 }
 
 export default FocusList;
