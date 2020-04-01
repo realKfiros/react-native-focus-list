@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /**
  * A React Native component that gets a list and highlights a selected item and shows the items that are near.
  * 
- * @version 1.0.9
+ * @version 1.1
  * @author [Kfir Nevo](https://github.com/realKfiros)
  */
 class FocusList extends Component {
@@ -112,8 +112,10 @@ const CenteredFlatList = styled(FlatList)`
  * 
  * @ignore
  */
-const FirstItemFlatList = styled(CenteredFlatList)`
+const FirstItemFlatList = styled(FlatList)`
   margin-left: ${props => props.marginFirst}px;
+  flex-grow: 1;
+  justify-content: center;
 `;
 
 FocusList.propTypes = {
