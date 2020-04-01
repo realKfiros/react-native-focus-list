@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
+import { View } from 'react-native';
 import Item from './components/Item';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -7,15 +7,18 @@ import PropTypes from 'prop-types';
 /**
  * A React Native component that gets a list and highlights a selected item and shows the items that are near.
  * 
- * @version 1.1
+ * @version 1.2.1
  * @author [Kfir Nevo](https://github.com/realKfiros)
  */
 class FocusList extends Component {
-  state = {
-    focus: 0
-  };
-
   componentDidMount() {
+    this.initializeFocus();
+  }
+
+  /**
+   * Initializes the focus on the list
+   */
+  initializeFocus() {
     this.setState({
       focus: this.props.startNumber
     });
@@ -85,38 +88,37 @@ class FocusList extends Component {
   }
 
   render() {
-    const ItemComponent = this.props.itemComponent;
-    const List = this.state.focus === 0 ? FirstItemFlatList : CenteredFlatList;
-    return (
-      <List
-        marginFirst={this.props.marginFirst}
-        horizontal={true}
-        data={this.getCurrentFocus()}
-        renderItem={({item}) => <ItemComponent data={item.data} focus={item.index === this.state.focus}/>}/>
-    )
+    if (this.state && this.state.focus) {
+      const ItemComponent = this.props.itemComponent;
+      const arr = this.getCurrentFocus();
+      const First = this.state.focus === 0 ? null : <ItemComponent data={arr[0].data} focus={false} />
+      const Second = this.state.focus === 0 ? <ItemComponent data={arr[0].data} focus={true} /> : <ItemComponent data={arr[1].data} focus={true} />
+      const Third = this.state.focus === this.props.dataArray.length - 1 ? null : (
+        this.state.focus === 0 ? <ItemComponent data={arr[1].data} focus={false} /> : <ItemComponent data={arr[2].data} focus={false} />
+      );
+      return (
+        <ListView>
+          {First}
+          {Second}
+          {Third}
+        </ListView>
+      );
+    } else {
+      return null
+    }
   }
 }
 
 /**
- * The same horizontal flat list but centered horizontally
+ * The "list" view
  * 
  * @ignore
  */
-const CenteredFlatList = styled(FlatList)`
-  flex-grow: 1;
+const ListView = styled(View)`
+  flex-direction: row;
   justify-content: center;
-`;
-
-/**
- * Margin for the first item
- * 
- * @ignore
- */
-const FirstItemFlatList = styled(FlatList)`
-  margin-left: ${props => props.marginFirst}px;
-  flex-grow: 1;
-  justify-content: center;
-`;
+  text-align: center;
+`
 
 FocusList.propTypes = {
   /** The data array */
