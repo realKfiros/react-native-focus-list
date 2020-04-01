@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 /**
  * A React Native component that gets a list and highlights a selected item and shows the items that are near.
  * 
- * @version 1.2.1
+ * @version 1.2.3
  * @author [Kfir Nevo](https://github.com/realKfiros)
  */
 class FocusList extends Component {
@@ -19,9 +19,15 @@ class FocusList extends Component {
    * Initializes the focus on the list
    */
   initializeFocus() {
-    this.setState({
-      focus: this.props.startNumber
-    });
+    if (this.props.startNumber) {
+      this.setState({
+        focus: this.props.startNumber
+      });
+    } else {
+      this.setState({
+        focus: 0
+      });
+    }
   }
 
   /**
@@ -88,7 +94,7 @@ class FocusList extends Component {
   }
 
   render() {
-    if (this.state && this.state.focus) {
+    if (this.state && (this.state.focus !== null)) {
       const ItemComponent = this.props.itemComponent;
       const arr = this.getCurrentFocus();
       const First = this.state.focus === 0 ? null : <ItemComponent data={arr[0].data} focus={false} />
